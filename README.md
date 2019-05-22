@@ -25,12 +25,12 @@ reboot into a graphical desktop.
 
 ### Obligatory Screenshots
 
-[![Screenshot1](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-1-250px.jpg)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-1.jpg)
-[![Screenshot2](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-2-250px.jpg)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-2.jpg)
-[![Screenshot3](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-3-250px.jpg)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-3.jpg)
-[![Screenshot4](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-4-250px.jpg)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-4.jpg)
-[![Screenshot5](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-5-250px.jpg)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-5.jpg)
-[![Screenshot6](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-6-250px.jpg)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-6.jpg)
+[![Screenshot1](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-1-250px.jpg?gh)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-1.jpg)
+[![Screenshot2](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-2-250px.jpg?gh)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-2.jpg)
+[![Screenshot3](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-3-250px.jpg?gh)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-3.jpg)
+[![Screenshot4](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-4-250px.jpg?gh)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-4.jpg)
+[![Screenshot5](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-5-250px.jpg?gh)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-5.jpg)
+[![Screenshot6](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-6-250px.jpg?gh)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-6.jpg)
 
 ## Requirements
 
