@@ -2,6 +2,8 @@
 
 This is an installation script for a FreeBSD based MATE desktop. See http://www.unibia.com/unibianet/freebsd/mate-desktop for additional information.
 
+__Note: Use the link (http://k.itty.cat/7) to always get the latest version of the installation script.__
+
 #### Disclaimers and Warnings
 
 * It makes use of a custom package repository (https://pkg.ny-us.morante.net). 
