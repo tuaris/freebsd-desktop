@@ -32,9 +32,7 @@ Platform options are limited only due to lack of packages.
 
 ## About
 
-This is inspired by GhostBSD.  GhostBSD was a FreeBSD desktop distribution that originally used FreeBSD as it's base.  After several years GhostBSD switch it's base to TrueOS.  While GhostBSD continues to be a great desktop I require (and prefer) a FreeBSD base system.
-
-I'm a long time FreeBSD user and consider myself to be fairly advanced in FreeBSD system administration.  I created this installation script and the corresponding PKG repository to fill the gap left by GhostBSD.
+This is inspired by GhostBSD.  GhostBSD was a FreeBSD desktop distribution that originally used FreeBSD as it's base.  After several years GhostBSD switch it's base to TrueOS.  While GhostBSD continues to be a great desktop I require (and prefer) a FreeBSD base system. I created this installation script and the corresponding PKG repository to fill the gap left by GhostBSD.
 
 ## How it Works
 
@@ -52,7 +50,7 @@ sysutils_gksu_UNSET+=NAUTILUS
 
 The most notable alteration to the default FreeBSD ports tree is the addition of the [TDMC/Pacy World, LLC. root CA](http://www.pacyworld.com/ca.php).
 
-### Key Package List
+## Key Package List
 
 The complete list of packages installed will vary as dependencies change.  This is a list of the most notable packages that will be installed.
 
@@ -67,3 +65,7 @@ The complete list of packages installed will vary as dependencies change.  This 
 It also goes on to install some GhostBSD packages that have been ported over such as utilities and themes.
 
 Finally if the script detects that it's running inside of a VMware virtual machine it will trigger the install the Open VMware tools package as described at http://www.unibia.com/unibianet/freebsd/vmware-tools-smooth-mouse-clipboard-sharing-auto-resize-ghostbsd-103.
+
+## The Repository
+
+It currently takes about 5 days to build all the packages in the FreeBSD ports tree.
