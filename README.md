@@ -79,7 +79,7 @@ Finally if the script detects that it's running inside of a VMware virtual machi
 
 ## The Repository
 
-Originally this was intended for personal use but quickly realized that others can benefit from my work.  It currently takes about 5 days to build all the packages in the FreeBSD ports tree.  Adding more repos and speeding up the build process is a matter of adding for computing resources.  Perhaps if this find a decent enough following I may consider expanding it further by making a bootable graphical installer.
+Originally this was intended for personal use but quickly realized that others can benefit from my work.  It currently takes about 5 days to build all the packages in the FreeBSD ports tree.  Adding more repos and speeding up the build process is a matter of adding more computing resources.  Perhaps if this find a decent enough following I may consider expanding it further by making a bootable graphical installer.
 
 If you find this useful and want to show some appreciation the following options are available:
 
