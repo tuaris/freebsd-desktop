@@ -79,10 +79,13 @@ Finally if the script detects that it's running inside of a VMware virtual machi
 
 ## The Repository
 
-Originally this was intended for personal use but quickly realized that others can benefit from my work.  It currently takes about 5 days to build all the packages in the FreeBSD ports tree.  Adding more repos and speeding up the build process is a matter of adding more computing resources.  Perhaps if this find a decent enough following I may consider expanding it further by making a bootable graphical installer.
+Originally this was intended for personal use but quickly realized that others can benefit from my work.  It currently takes about 5 days to build all the packages in the FreeBSD ports tree.  Adding more repos and speeding up the build process is a matter of adding additional computing resources.  Perhaps if this find a decent enough following I may consider expanding it further by making a bootable graphical installer.
 
 If you find this useful and want to show some appreciation the following options are available:
 
 - Just say thanks: http://www.unibia.com/unibianet/contact
 - Send some money: https://paypal.me/unibia
-- Send some crypto: __bitcoin:13ViU3NzRqgijMczSUeDR6NVQPW8Yv6QeY__ __litecoin:Lhxjdf1DUPmnE2RAJdLrJZPJZ7VMubnVZp__  __ETC:0xf3cef688864f17effc6a8ce52c5550d9b226f3c0__
+- Send some crypto: 
+    - __(BTC) bitcoin:13ViU3NzRqgijMczSUeDR6NVQPW8Yv6QeY__
+    - __(LTC) litecoin:Lhxjdf1DUPmnE2RAJdLrJZPJZ7VMubnVZp__  
+    - __(ETC) 0xf3cef688864f17effc6a8ce52c5550d9b226f3c0__
