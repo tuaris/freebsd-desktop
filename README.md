@@ -1,6 +1,6 @@
 # FreeBSD Desktop with MATE
 
-This is an installation script for a FreeBSD based MATE desktop. 
+This is an installation script for a FreeBSD based MATE desktop. See http://www.unibia.com/unibianet/freebsd/mate-desktop for additional information.
 
 #### Disclaimers and Warnings
 
