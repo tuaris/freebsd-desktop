@@ -6,7 +6,7 @@ __Note: Use the link (http://k.itty.cat/7) to always get the latest version of t
 
 #### Disclaimers and Warnings
 
-* It makes use of a custom package repository (https://pkg.ny-us.morante.net). 
+* It makes use of a custom package repository (https://pkg.ny-us.morante.net/desktop/). 
 * The `security/ca_root_nss` package is altered to include the [TDMC/Pacy World, LLC. root CA](http://www.pacyworld.com/ca.php).
 * I do not make any guarantee that latest security updates will be readily available.
 * The integrity of this repository is currently not being validated.
