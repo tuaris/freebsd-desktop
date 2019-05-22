@@ -79,4 +79,10 @@ Finally if the script detects that it's running inside of a VMware virtual machi
 
 ## The Repository
 
-It currently takes about 5 days to build all the packages in the FreeBSD ports tree.
+Originally this was intended for personal use but quickly realized that others can benefit from my work.  It currently takes about 5 days to build all the packages in the FreeBSD ports tree.  Adding more repos and speeding up the build process is a matter of adding for computing resources.  Perhaps if this find a decent enough following I may consider expanding it further by making a bootable graphical installer.
+
+If you find this useful and want to show some appreciation the following options are available:
+
+- Just say thanks: http://www.unibia.com/unibianet/contact
+- Send some money: https://paypal.me/unibia
+- Send some crypo: bitcoin:13ViU3NzRqgijMczSUeDR6NVQPW8Yv6QeY litecoin:Lhxjdf1DUPmnE2RAJdLrJZPJZ7VMubnVZp ETC:0xf3cef688864f17effc6a8ce52c5550d9b226f3c0
