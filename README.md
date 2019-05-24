@@ -23,6 +23,10 @@ fetch -o - http://k.itty.cat/7 | sh
 After about 30 minutes (depending on your Internet connection) your system will automatically
 reboot into a graphical desktop.
 
+## Known Issues
+
+There is no error control.  If a package fails to download, the execution will just continue.  If this happens, re-run the script.  It's perfectly safe to run this script as much as you want without any negative side effects.
+
 ### Obligatory Screenshots
 
 [![Screenshot1](http://venus.morante.net/downloads/unibia/screenshots/freebsd/thumb/desktop-1-250px.jpg?gh)](http://venus.morante.net/downloads/unibia/screenshots/freebsd/desktop-1.jpg)
