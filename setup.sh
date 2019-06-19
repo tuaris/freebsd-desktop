@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1
+# Version 0.1.1
 
 ########################################################################################
 # Copyright (c) 2016-2019, The Daniel Morante Company, Inc.
@@ -174,9 +174,17 @@ sh -c 'echo -e "Base: {\n\turl: \"http://pkg.ny-us.morante.net/desktop/\${ABI}\"
 
 env ASSUME_ALWAYS_YES=YES pkg bootstrap
 
-if [ $(pciconf -lv pci0:0:15:0 | grep vendor | awk -F "\'" '{ print tolower($2) }') == "vmware" ]; then 
-	# Install VMWare Tools (if virtual machine on VMWare)
+# Install VMWare Tools (if virtual machine on VMWare)
+if [ $(pciconf -lv | grep -i vmware >/dev/null 2>/dev/null; echo $?) = "0" ]; then
 	fetch -qo - http://k.itty.cat/3 | sh
+fi
+
+# Install VirtualBox Addons (if virtual machine on VirtualBox)
+if [ $(pciconf -lv | grep -i virtualbox >/dev/null 2>/dev/null; echo $?) = "0" ]; then
+	# Install the drivers
+	pkg install -y emulators/virtualbox-ose-additions
+	# Enable
+	sysrc -f /etc/rc.conf.d/virtualbox.conf vboxguest_enable="YES" vboxservice_enable="YES"
 fi
 
 # Configure rc.conf
