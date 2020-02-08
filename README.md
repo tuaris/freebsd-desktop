@@ -15,7 +15,7 @@ __Note: Use the link (http://k.itty.cat/7) to always get the latest version of t
 
 ## Quick Start
 
-It's recommended that you start with a clean install of FreeBSD 12.0 64-bit.  Your non-root user
+It's recommended that you start with a clean install of FreeBSD 12.x 64-bit.  Your non-root user
 should belong to the `operator` and `wheel` group so that it can perform administrative functions.
 
 ```
@@ -42,7 +42,7 @@ There is no error control.  If a package fails to download, the execution will j
 
 Platform options are limited only due to lack of packages.
 
-- FreeBSD 12.0-RELEASE
+- FreeBSD 12.x-RELEASE
 - 64-bit edition (amd64)
 - 20 GB free space
 - Internet connection
