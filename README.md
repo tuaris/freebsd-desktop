@@ -10,6 +10,8 @@ __Note: Use the link (http://k.itty.cat/7) to always get the latest version of t
 * The [`security/ca_root_nss`](https://www.freshports.org/security/ca_root_nss) package is altered to include the [TDMC/Pacy World, LLC. root CA](http://www.pacyworld.com/ca.php).
 * The [`security/nss`](https://www.freshports.org/security/nss) package is altered to include the [TDMC/Pacy World, LLC. root CA](http://www.pacyworld.com/ca.php).
 * The [`www/firefox`](https://www.freshports.org/www/firefox) and [`www/firefox-esr`](https://www.freshports.org/www/firefox-esr) packages are altered to include the [TDMC/Pacy World, LLC. root CA](http://www.pacyworld.com/ca.php).
+* The [`mail/thunderbird`](https://www.freshports.org/mail/thunderbird) package is altered to include the [TDMC/Pacy World, LLC. root CA](http://www.pacyworld.com/ca.php).
+* All [`www/node`](https://www.freshports.org/www/node) packages are also altered to include the [TDMC/Pacy World, LLC. root CA](http://www.pacyworld.com/ca.php).
 * WIP: DoH disabled by default in Firefox as was done by [OpenBSD](https://undeadly.org/cgi?action=article;sid=20190911113856)
 * WIP: Pinned certificates for well-know ad serving hostnames removed from Firefox.
 * I do not make any guarantee that latest security updates will be readily available.
