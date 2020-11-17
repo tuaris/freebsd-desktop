@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.3
+# Version 0.1.4
 
 ########################################################################################
 # Copyright (c) 2016-2019, The Daniel Morante Company, Inc.
@@ -48,7 +48,7 @@ if [ $(id -u) -ne 0 ]; then
 fi
 
 # Make sure we are on FreeBSD
-if [ "$OSTYPE" != "FreeBSD" ]; then
+if [ $(sysctl -n kern.ostype) != "FreeBSD" ]; then
 	echo "Fatal Error: This script is only for FreeBSD"
 	exit 1
 fi
@@ -60,7 +60,7 @@ if [ $(/bin/freebsd-version | awk -F '-' '{ print $1}' | awk -F '.' '{ print $1 
 fi
 
 # Only 64-bit CPU
-if [ "$MACHTYPE" != "x86_64" ]; then
+if [ $(getconf LONG_BIT) != 64 ]; then
 	echo "Fatal Error: This script is only for 64-bit machines"
 	exit 1
 fi
@@ -173,6 +173,13 @@ echo 'FreeBSD: { enabled: no }' > /usr/local/etc/pkg/repos/FreeBSD.conf
 sh -c 'echo -e "Base: {\n\turl: \"http://pkg.ny-us.morante.net/desktop/\${ABI}\",\n\tenabled: yes\n}" > /usr/local/etc/pkg/repos/Desktop.conf'
 
 env ASSUME_ALWAYS_YES=YES pkg bootstrap
+
+# Install Pacy World Root CA's into system CA root store (FreeBSD 12.2 or greater)
+if [ $(sysctl -n kern.osreldate) -ge  1202000 ]; then
+	fetch -qo /usr/share/certs/trusted/ca-pacyworld.com.pem http://www.pacyworld.com/ca-pacyworld.com.crt
+	fetch -qo /usr/share/certs/trusted/alt_ca-morante_root.pem http://www.pacyworld.com/alt_ca-morante_root.crt
+	certctl rehash
+fi
 
 # Configure rc.conf
 sysrc moused_enable="YES" dbus_enable="YES" hald_enable="YES" sddm_enable="YES" ntpd_enable="YES" ntpd_flags="-g" webcamd_enable="YES"
