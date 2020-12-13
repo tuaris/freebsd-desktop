@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.6
+# Version 0.1.7
 
 ########################################################################################
 # Copyright (c) 2016-2019, The Daniel Morante Company, Inc.
@@ -188,7 +188,7 @@ sysrc moused_enable="YES" dbus_enable="YES" hald_enable="YES" sddm_enable="YES" 
 pkg install -y xorg firefox sudo
 pkg install -y mate-desktop mate networkmgr pavucontrol
 pkg install -y sddm sddm-freebsd-black-theme
-pkg install -y webcamd cuse4bsd-kmod
+pkg install -y webcamd
 pkg install -y octopkg fish gksu doas seahorse xdg-user-dirs leafpad
 
 # Initial Sound theme
