@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.7
+# Version 0.1.8
 
 ########################################################################################
 # Copyright (c) 2016-2019, The Daniel Morante Company, Inc.
@@ -350,7 +350,7 @@ permit nopass keepenv :wheel cmd shutdown args -r now
 EOF
 
 # Lets now install some additional usefull osftware
-pkg install -y thunderbird openjdk8
+pkg install -y thunderbird openjdk8 mpc-qt vlc
 
 # Install VMWare Tools (if virtual machine on VMWare)
 if [ $(pciconf -lv | grep -i vmware >/dev/null 2>/dev/null; echo $?) = "0" ]; then
