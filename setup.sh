@@ -2,10 +2,10 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.8
+# Version 0.1.9
 
 ########################################################################################
-# Copyright (c) 2016-2019, The Daniel Morante Company, Inc.
+# Copyright (c) 2016-2020, The Daniel Morante Company, Inc.
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -207,7 +207,13 @@ FSTAB=/etc/fstab; if [ $(grep -q "/proc" "${FSTAB}"; echo $?) == 1 ]; then echo 
 
 sed -i '' -r 's/^# (%wheel ALL=\(ALL\) ALL)$/\1/I' /usr/local/etc/sudoers
 sed -i "" -e 's/# %sudo/%sudo/g' /usr/local/etc/sudoers
-sed -i '' -r 's/^(Current=).*$/\1'sddm-freebsd-black-theme'/I' /usr/local/etc/sddm.conf
+
+# Setup SDDM login theme
+mkdir -p /usr/local/etc/sddm.conf.d
+cat << EOF >/usr/local/etc/sddm.conf.d/FreeBSD.conf
+[Theme]
+Current=sddm-freebsd-black-theme
+EOF
 
 # Improved Networking
 setconfig -f /etc/sysctl.conf net.local.stream.recvspace=65536
