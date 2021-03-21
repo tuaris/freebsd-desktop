@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.11
+# Version 0.1.13
 
 ########################################################################################
 # Copyright (c) 2016-2021, The Daniel Morante Company, Inc.
@@ -195,7 +195,7 @@ pkg install -y octopkg fish gksu doas seahorse xdg-user-dirs leafpad
 pkg install -y audio/freedesktop-sound-theme
 
 # Install (a soon to be default) desktop & icon theme
-pkg install -y x11-themes/matcha-gtk-themes x11-themes/papirus-icon-theme x11-themes/gtk-nodoka-engine
+pkg install -y x11-themes/matcha-gtk-themes x11-themes/papirus-icon-theme x11-themes/gtk-nodoka-engine x11-themes/cursor-neutral-white-theme
 
 # Install some fonts
 pkg install -y chinese/arphicttf chinese/font-std hebrew/culmus hebrew/elmar-fonts japanese/font-ipa japanese/font-ipa-uigothic japanese/font-ipaex japanese/font-kochi japanese/font-migmix japanese/font-migu japanese/font-mona-ipa japanese/font-motoya-al japanese/font-mplus-ipa japanese/font-sazanami japanese/font-shinonome japanese/font-takao japanese/font-ume japanese/font-vlgothic x11-fonts/hanazono-fonts-ttf japanese/font-mikachan korean/aleefonts-ttf korean/nanumfonts-ttf korean/unfonts-core x11-fonts/anonymous-pro x11-fonts/artwiz-aleczapka x11-fonts/dejavu x11-fonts/inconsolata-ttf x11-fonts/terminus-font x11-fonts/cantarell-fonts x11-fonts/droid-fonts-ttf x11-fonts/doulos x11-fonts/ubuntu-font x11-fonts/isabella x11-fonts/junicode x11-fonts/khmeros x11-fonts/padauk x11-fonts/stix-fonts x11-fonts/charis x11-fonts/urwfonts-ttf russian/koi8r-ps x11-fonts/geminifonts x11-fonts/cyr-rfx x11-fonts/paratype x11-fonts/gentium-plus
@@ -230,7 +230,7 @@ setconfig -f /etc/sysctl.conf kern.ipc.shm_allow_removed=1
 # Allow users to mount disks
 setconfig -f /etc/sysctl.conf vfs.usermount=1
 
-sysrc -f /boot/loader.conf fuse_load="YES" tmpfs_load="YES" aio_load="YES" libiconv_load="YES" libmchain_load="YES" cd9660_iconv_load="YES" msdosfs_iconv_load="YES" snd_driver_load="YES" cuse4bsd_load="YES" boot_mute="YES"
+sysrc -f /boot/loader.conf fuse_load="YES" tmpfs_load="YES" aio_load="YES" libiconv_load="YES" libmchain_load="YES" cd9660_iconv_load="YES" msdosfs_iconv_load="YES" snd_driver_load="YES" cuse_load="YES" boot_mute="YES"
 
 # Boot-time kernel tuning
 setconfig -f /boot/loader.conf kern.ipc.shmseg=1024
