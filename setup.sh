@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.13
+# Version 0.1.15
 
 ########################################################################################
 # Copyright (c) 2016-2021, The Daniel Morante Company, Inc.
@@ -38,8 +38,12 @@
 # For a full explination of what is going on here, please visit:
 # 	http://www.unibia.com/unibianet/freebsd/mate-desktop
 
-# For 12.0-RELEASE
-# Setup desktop FreeBSD 12.x
+# For 12.2-RELEASE and 13.0-RELEASE
+MIN_VERSION=1202000
+MAX_VERSION=1300000
+
+# Setup desktop FreeBSD (the "-K" option for "uname" is not avaiable pre-12)
+CURRENT_FREEBSD_VERSION=$(sysctl -n kern.osreldate)
 
 # Only root can run this
 if [ $(id -u) -ne 0 ]; then
@@ -53,9 +57,9 @@ if [ $(sysctl -n kern.ostype) != "FreeBSD" ]; then
 	exit 1
 fi
 
-# Currently we only support FreeBSD 12.x
-if [ $(/bin/freebsd-version | awk -F '-' '{ print $1}' | awk -F '.' '{ print $1 }') != "12" ]; then
-	echo "Fatal Error: This script is only for FreeBSD version 12"
+# Currently we only support FreeBSD 12.2 up to 13.0
+if ! [ $CURRENT_FREEBSD_VERSION -ge $MIN_VERSION ] && [ $CURRENT_FREEBSD_VERSION -le $MAX_VERSION ]; then
+	echo "Fatal Error: This script is not supported for your FreeBSD version: $(freebsd-version)"
 	exit 1
 fi
 
@@ -182,13 +186,13 @@ if [ $(sysctl -n kern.osreldate) -ge  1202000 ]; then
 fi
 
 # Configure rc.conf
-sysrc moused_enable="YES" dbus_enable="YES" hald_enable="YES" sddm_enable="YES" ntpd_enable="YES" ntpd_flags="-g" webcamd_enable="YES"
+sysrc moused_enable="YES" dbus_enable="YES" hald_enable="YES" sddm_enable="YES" ntpd_enable="YES" ntpd_flags="-g" webcamd_enable="YES" kiconv_preload="YES" kiconv_local_charsets="UTF-8" kiconv_foreign_charsets="UTF-8"
 
 # Install Software
 pkg install -y xorg firefox sudo
 pkg install -y mate-desktop mate networkmgr pavucontrol
 pkg install -y sddm sddm-freebsd-black-theme
-pkg install -y webcamd
+pkg install -y webcamd kiconvtool
 pkg install -y octopkg fish gksu doas seahorse xdg-user-dirs leafpad
 
 # Initial Sound theme
@@ -230,7 +234,7 @@ setconfig -f /etc/sysctl.conf kern.ipc.shm_allow_removed=1
 # Allow users to mount disks
 setconfig -f /etc/sysctl.conf vfs.usermount=1
 
-sysrc -f /boot/loader.conf fuse_load="YES" tmpfs_load="YES" aio_load="YES" libiconv_load="YES" libmchain_load="YES" cd9660_iconv_load="YES" msdosfs_iconv_load="YES" snd_driver_load="YES" cuse_load="YES" boot_mute="YES"
+sysrc -f /boot/loader.conf fuse_load="YES" tmpfs_load="YES" smbfs_load="YES" aio_load="YES" libiconv_load="YES" libmchain_load="YES" cd9660_iconv_load="YES" msdosfs_iconv_load="YES" snd_driver_load="YES" cuse_load="YES" boot_mute="YES"
 
 # Boot-time kernel tuning
 setconfig -f /boot/loader.conf kern.ipc.shmseg=1024
@@ -375,3 +379,4 @@ fi
 
 # All done, lets reboot into a desktop!
 reboot
+
