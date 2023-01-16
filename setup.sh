@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.15
+# Version 0.1.16
 
 ########################################################################################
 # Copyright (c) 2016-2021, The Daniel Morante Company, Inc.
@@ -38,9 +38,9 @@
 # For a full explination of what is going on here, please visit:
 # 	http://www.unibia.com/unibianet/freebsd/mate-desktop
 
-# For 12.2-RELEASE and 13.0-RELEASE
-MIN_VERSION=1202000
-MAX_VERSION=1300000
+# For 12.3-RELEASE and 13.1-RELEASE
+MIN_VERSION=1203000
+MAX_VERSION=1301000
 
 # Setup desktop FreeBSD (the "-K" option for "uname" is not avaiable pre-12)
 CURRENT_FREEBSD_VERSION=$(sysctl -n kern.osreldate)
@@ -57,8 +57,8 @@ if [ $(sysctl -n kern.ostype) != "FreeBSD" ]; then
 	exit 1
 fi
 
-# Currently we only support FreeBSD 12.2 up to 13.0
-if ! [ $CURRENT_FREEBSD_VERSION -ge $MIN_VERSION ] && [ $CURRENT_FREEBSD_VERSION -le $MAX_VERSION ]; then
+# Currently we only support FreeBSD 12.3 up to 13.1
+if [ ! $CURRENT_FREEBSD_VERSION -ge $MIN_VERSION ] || [ ! $CURRENT_FREEBSD_VERSION -le $MAX_VERSION ]; then
 	echo "Fatal Error: This script is not supported for your FreeBSD version: $(freebsd-version)"
 	exit 1
 fi
@@ -174,14 +174,14 @@ env PAGER=cat freebsd-update install --not-running-from-cron
 
 mkdir -p /usr/local/etc/pkg/repos/
 echo 'FreeBSD: { enabled: no }' > /usr/local/etc/pkg/repos/FreeBSD.conf
-sh -c 'echo -e "Base: {\n\turl: \"http://pkg.ny-us.morante.net/desktop/\${ABI}\",\n\tenabled: yes\n}" > /usr/local/etc/pkg/repos/Desktop.conf'
+sh -c 'echo -e "Base: {\n\turl: \"http://pkg.morante.net/desktop/\${ABI}\",\n\tenabled: yes\n}" > /usr/local/etc/pkg/repos/Desktop.conf'
 
 env ASSUME_ALWAYS_YES=YES pkg bootstrap
 
 # Install Pacy World Root CA's into system CA root store (FreeBSD 12.2 or greater)
 if [ $(sysctl -n kern.osreldate) -ge  1202000 ]; then
-	fetch -qo /usr/share/certs/trusted/ca-pacyworld.com.pem http://www.pacyworld.com/ca-pacyworld.com.crt
-	fetch -qo /usr/share/certs/trusted/alt_ca-morante_root.pem http://www.pacyworld.com/alt_ca-morante_root.crt
+	fetch -qo /usr/share/certs/trusted/ca-pacyworld.com.pem http://cdn.pacyworld.com/pacyworld.com/ca/ca-pacyworld.com.crt
+	fetch -qo /usr/share/certs/trusted/alt_ca-morante_root.pem http://cdn.pacyworld.com/pacyworld.com/ca/alt_ca-morante_root.crt
 	certctl rehash
 fi
 
