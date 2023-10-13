@@ -40,7 +40,7 @@
 
 # For 12.3-RELEASE and 13.1-RELEASE
 MIN_VERSION=1203000
-MAX_VERSION=1302000
+MAX_VERSION=1302001
 
 # Setup desktop FreeBSD (the "-K" option for "uname" is not avaiable pre-12)
 CURRENT_FREEBSD_VERSION=$(sysctl -n kern.osreldate)
