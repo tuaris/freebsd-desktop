@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.18
+# Version 0.1.19
 
 ########################################################################################
 # Copyright (c) 2016-2021, The Daniel Morante Company, Inc.
@@ -234,7 +234,7 @@ setconfig -f /etc/sysctl.conf kern.ipc.shm_allow_removed=1
 # Allow users to mount disks
 setconfig -f /etc/sysctl.conf vfs.usermount=1
 
-sysrc -f /boot/loader.conf fuse_load="YES" tmpfs_load="YES" smbfs_load="YES" aio_load="YES" libiconv_load="YES" libmchain_load="YES" cd9660_iconv_load="YES" msdosfs_iconv_load="YES" snd_driver_load="YES" cuse_load="YES" boot_mute="YES"
+sysrc -f /boot/loader.conf fusefs_load="YES" tmpfs_load="YES" smbfs_load="YES" aio_load="YES" libiconv_load="YES" libmchain_load="YES" cd9660_iconv_load="YES" msdosfs_iconv_load="YES" snd_driver_load="YES" cuse_load="YES" boot_mute="YES"
 
 # Boot-time kernel tuning
 setconfig -f /boot/loader.conf kern.ipc.shmseg=1024
