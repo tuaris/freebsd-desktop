@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.19
+# Version 0.1.20
 
 ########################################################################################
 # Copyright (c) 2016-2021, The Daniel Morante Company, Inc.
@@ -38,9 +38,9 @@
 # For a full explination of what is going on here, please visit:
 # 	http://www.unibia.com/unibianet/freebsd/mate-desktop
 
-# For 12.3-RELEASE and 13.1-RELEASE
+# For 12.3-RELEASE thru 14.0-RELEASE
 MIN_VERSION=1203000
-MAX_VERSION=1302001
+MAX_VERSION=1400097
 
 # Setup desktop FreeBSD (the "-K" option for "uname" is not avaiable pre-12)
 CURRENT_FREEBSD_VERSION=$(sysctl -n kern.osreldate)
@@ -57,7 +57,7 @@ if [ $(sysctl -n kern.ostype) != "FreeBSD" ]; then
 	exit 1
 fi
 
-# Currently we only support FreeBSD 12.3 up to 13.1
+# Currently we only support FreeBSD 12.2 up to 14.0
 if [ ! $CURRENT_FREEBSD_VERSION -ge $MIN_VERSION ] || [ ! $CURRENT_FREEBSD_VERSION -le $MAX_VERSION ]; then
 	echo "Fatal Error: This script is not supported for your FreeBSD version: $(freebsd-version)"
 	exit 1
@@ -180,8 +180,8 @@ env ASSUME_ALWAYS_YES=YES pkg bootstrap
 
 # Install Pacy World Root CA's into system CA root store (FreeBSD 12.2 or greater)
 if [ $(sysctl -n kern.osreldate) -ge  1202000 ]; then
-	fetch -qo /usr/share/certs/trusted/ca-pacyworld.com.pem http://cdn.pacyworld.com/pacyworld.com/ca/ca-pacyworld.com.crt
-	fetch -qo /usr/share/certs/trusted/alt_ca-morante_root.pem http://cdn.pacyworld.com/pacyworld.com/ca/alt_ca-morante_root.crt
+    fetch -qo /usr/share/certs/trusted/ca-pacyworld.com.pem http://cdn.pacyworld.com/pacyworld.com/ca/ca-pacyworld.com.crt
+    fetch -qo /usr/share/certs/trusted/alt_ca-morante_root.pem http://cdn.pacyworld.com/pacyworld.com/ca/alt_ca-morante_root.crt
 	certctl rehash
 fi
 
@@ -199,7 +199,7 @@ pkg install -y octopkg fish doas seahorse xdg-user-dirs leafpad
 pkg install -y audio/freedesktop-sound-theme
 
 # Install (a soon to be default) desktop & icon theme
-pkg install -y x11-themes/matcha-gtk-themes x11-themes/papirus-icon-theme x11-themes/gtk-nodoka-engine x11-themes/cursor-neutral-white-theme
+pkg install -y x11-themes/matcha-gtk-themes x11-themes/papirus-icon-theme x11-themes/gtk-nodoka-engine x11-themes/cursor-neutral-white-theme x11-themes/qogir-icon-themes x11-themes/qogir-gtk-themes
 
 # Install some fonts
 pkg install -y chinese/arphicttf chinese/font-std hebrew/culmus hebrew/elmar-fonts japanese/font-ipa japanese/font-ipa-uigothic japanese/font-ipaex japanese/font-kochi japanese/font-migmix japanese/font-migu japanese/font-mona-ipa japanese/font-motoya-al japanese/font-mplus-ipa japanese/font-sazanami japanese/font-shinonome japanese/font-takao japanese/font-ume japanese/font-vlgothic x11-fonts/hanazono-fonts-ttf japanese/font-mikachan korean/aleefonts-ttf korean/nanumfonts korean/unfonts-core x11-fonts/anonymous-pro x11-fonts/artwiz-aleczapka x11-fonts/dejavu x11-fonts/inconsolata-ttf x11-fonts/terminus-font x11-fonts/cantarell-fonts x11-fonts/droid-fonts-ttf x11-fonts/doulos x11-fonts/ubuntu-font x11-fonts/isabella x11-fonts/junicode x11-fonts/khmeros x11-fonts/padauk x11-fonts/stix-fonts x11-fonts/charis x11-fonts/urwfonts-ttf russian/koi8r-ps x11-fonts/geminifonts x11-fonts/cyr-rfx x11-fonts/paratype x11-fonts/gentium-plus x11-fonts/nerd-fonts x11-fonts/powerline-fonts
