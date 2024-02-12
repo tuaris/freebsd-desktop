@@ -2,10 +2,10 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.20
+# Version 0.1.21
 
 ########################################################################################
-# Copyright (c) 2016-2021, The Daniel Morante Company, Inc.
+# Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -234,12 +234,22 @@ setconfig -f /etc/sysctl.conf kern.ipc.shm_allow_removed=1
 # Allow users to mount disks
 setconfig -f /etc/sysctl.conf vfs.usermount=1
 
-sysrc -f /boot/loader.conf fusefs_load="YES" tmpfs_load="YES" smbfs_load="YES" aio_load="YES" libiconv_load="YES" libmchain_load="YES" cd9660_iconv_load="YES" msdosfs_iconv_load="YES" snd_driver_load="YES" cuse_load="YES" boot_mute="YES"
+# The essentials for a desktop
+sysrc -f /boot/loader.conf fusefs_load="YES" tmpfs_load="YES" smbfs_load="YES" aio_load="YES" libiconv_load="YES" libmchain_load="YES" cd9660_iconv_load="YES" msdosfs_iconv_load="YES" snd_driver_load="YES" cuse_load="YES" 
+
+# Pretty Boot
+sysrc -f /boot/loader.conf boot_mute="YES"
 
 # Boot-time kernel tuning
 setconfig -f /boot/loader.conf kern.ipc.shmseg=1024
 setconfig -f /boot/loader.conf kern.ipc.shmmni=1024
 setconfig -f /boot/loader.conf kern.maxproc=100000
+
+# Enable equalizer for sound cards
+# https://forums.ghostbsd.org/viewtopic.php?t=792
+# https://github.com/nomadbsd/NomadBSD/blob/master/config/boot/loader.conf
+# https://github.com/helloSystem/ISO/blob/experimental/overlays/boot/boot/loader.conf
+sysrc -f /boot/loader.conf hint.pcm.0.eq="1" hint.pcm.1.eq="1" hint.pcm.2.eq="1" hint.pcm.3.eq="1" hint.pcm.4.eq="1" hint.pcm.5.eq="1" hint.pcm.6.eq="1" hint.pcm.7.eq="1" hint.pcm.8.eq="1" hint.pcm.9.eq="1"
 
 cat << EOF >/usr/local/etc/PolicyKit/PolicyKit.conf
 <config version="0.1">
@@ -379,4 +389,3 @@ fi
 
 # All done, lets reboot into a desktop!
 reboot
-
