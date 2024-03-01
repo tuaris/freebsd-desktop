@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.24
+# Version 0.1.25
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -210,14 +210,23 @@ pkg install -y chinese/arphicttf chinese/font-std hebrew/culmus hebrew/elmar-fon
 # Install Emoji fonts & tooling
 pkg install -y twemoji-color-font-ttf noto-emoji textproc/ibus-uniemoji
 
+# Web Broswer
+pkg install -y firefox
+
+# Install additional usefull software for a better experience
+pkg install -y thunderbird mpc-qt vlc notepadnext photoflare
+
 # Install Desktop Environment, themes and related utilities
 pkg install -y mate
 pkg install -y seahorse gnome-keyring
 pkg install -y networkmgr pavucontrol
 pkg install -y x11-themes/matcha-gtk-themes x11-themes/gtk-nodoka-engine x11-themes/qogir-gtk-themes
 
-# Install, enable, and configure session manager
-pkg install -y sddm sddm-freebsd-black-theme
+# Install session manager with themes/tools
+pkg install -y sddm
+pkg install -y sddm-freebsd-black-theme
+
+# Enable, and configure session manager
 sysrc sddm_enable="YES"
 # Setup SDDM login theme
 mkdir -p /usr/local/etc/sddm.conf.d
@@ -226,8 +235,10 @@ cat << EOF >/usr/local/etc/sddm.conf.d/FreeBSD.conf
 Current=sddm-freebsd-black-theme
 EOF
 
+# Mount points for Java
 FSTAB=/etc/fstab; if [ $(grep -q "/proc" "${FSTAB}"; echo $?) == 1 ]; then echo -e "proc\t/proc\t\t\tprocfs\trw\t\t0\t0" >> $FSTAB; fi; if [ $(grep -q "/dev/fd" "${FSTAB}"; echo $?) == 1 ]; then echo -e "fdesc\t/dev/fd\t\t\tfdescfs\trw,auto,late\t0\t0" >> $FSTAB; fi
 
+# Allow sudo and doas to function for users in the 'wheel' group
 sed -i '' -r 's/^# (%wheel ALL=\(ALL\) ALL)$/\1/I' /usr/local/etc/sudoers
 sed -i "" -e 's/# %sudo/%sudo/g' /usr/local/etc/sudoers
 
@@ -380,12 +391,6 @@ permit nopass keepenv :wheel cmd chmod args -R 665 /var/db/update-station/
 permit nopass keepenv :wheel cmd sh args /usr/local/lib/update-station/cleandesktop.sh
 permit nopass keepenv :wheel cmd shutdown args -r now
 EOF
-
-# Web Broswer
-pkg install -y firefox
-
-# Lets now install some additional usefull software
-pkg install -y thunderbird mpc-qt vlc notepadnext photoflare
 
 # Install VMWare Tools (if virtual machine on VMWare)
 if [ $(pciconf -lv | grep -i vmware >/dev/null 2>/dev/null; echo $?) = "0" ]; then
