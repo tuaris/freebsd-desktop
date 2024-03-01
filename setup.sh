@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.23
+# Version 0.1.24
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -186,7 +186,7 @@ if [ $(sysctl -n kern.osreldate) -ge  1202000 ]; then
 fi
 
 # Configure rc.conf
-sysrc moused_enable="YES" dbus_enable="YES" hald_enable="YES" sddm_enable="YES" ntpd_enable="YES" ntpd_flags="-g" webcamd_enable="YES" kiconv_preload="YES" kiconv_local_charsets="UTF-8" kiconv_foreign_charsets="UTF-8"
+sysrc moused_enable="YES" dbus_enable="YES" hald_enable="YES" ntpd_enable="YES" ntpd_flags="-g" webcamd_enable="YES" kiconv_preload="YES" kiconv_local_charsets="UTF-8" kiconv_foreign_charsets="UTF-8"
 
 # Install Core Graphical Environment Software (last 2 pull in core libs for QT and GTK)
 pkg install -y xorg
@@ -195,20 +195,11 @@ pkg install -y webcamd kiconvtool
 pkg install -y octopkg
 pkg install -y leafpad
 
-# Install Desktop Environment, themes and related utilities
-pkg install -y mate
-pkg install -y seahorse gnome-keyring
-pkg install -y networkmgr pavucontrol
-pkg install -y x11-themes/matcha-gtk-themes x11-themes/gtk-nodoka-engine x11-themes/qogir-gtk-themes
-
 # Install Icon & Cursor Themes
 pkg install -y x11-themes/papirus-icon-theme x11-themes/cursor-neutral-white-theme x11-themes/qogir-icon-themes
 
 # Shell and Utilities
-pkg install -y fish sudo doas 
-
-# Install Session Manager
-pkg install -y sddm sddm-freebsd-black-theme
+pkg install -y fish sudo doas
 
 # Initial Sound theme
 pkg install -y audio/freedesktop-sound-theme
@@ -219,17 +210,26 @@ pkg install -y chinese/arphicttf chinese/font-std hebrew/culmus hebrew/elmar-fon
 # Install Emoji fonts & tooling
 pkg install -y twemoji-color-font-ttf noto-emoji textproc/ibus-uniemoji
 
-FSTAB=/etc/fstab; if [ $(grep -q "/proc" "${FSTAB}"; echo $?) == 1 ]; then echo -e "proc\t/proc\t\t\tprocfs\trw\t\t0\t0" >> $FSTAB; fi; if [ $(grep -q "/dev/fd" "${FSTAB}"; echo $?) == 1 ]; then echo -e "fdesc\t/dev/fd\t\t\tfdescfs\trw,auto,late\t0\t0" >> $FSTAB; fi
+# Install Desktop Environment, themes and related utilities
+pkg install -y mate
+pkg install -y seahorse gnome-keyring
+pkg install -y networkmgr pavucontrol
+pkg install -y x11-themes/matcha-gtk-themes x11-themes/gtk-nodoka-engine x11-themes/qogir-gtk-themes
 
-sed -i '' -r 's/^# (%wheel ALL=\(ALL\) ALL)$/\1/I' /usr/local/etc/sudoers
-sed -i "" -e 's/# %sudo/%sudo/g' /usr/local/etc/sudoers
-
+# Install, enable, and configure session manager
+pkg install -y sddm sddm-freebsd-black-theme
+sysrc sddm_enable="YES"
 # Setup SDDM login theme
 mkdir -p /usr/local/etc/sddm.conf.d
 cat << EOF >/usr/local/etc/sddm.conf.d/FreeBSD.conf
 [Theme]
 Current=sddm-freebsd-black-theme
 EOF
+
+FSTAB=/etc/fstab; if [ $(grep -q "/proc" "${FSTAB}"; echo $?) == 1 ]; then echo -e "proc\t/proc\t\t\tprocfs\trw\t\t0\t0" >> $FSTAB; fi; if [ $(grep -q "/dev/fd" "${FSTAB}"; echo $?) == 1 ]; then echo -e "fdesc\t/dev/fd\t\t\tfdescfs\trw,auto,late\t0\t0" >> $FSTAB; fi
+
+sed -i '' -r 's/^# (%wheel ALL=\(ALL\) ALL)$/\1/I' /usr/local/etc/sudoers
+sed -i "" -e 's/# %sudo/%sudo/g' /usr/local/etc/sudoers
 
 # Improved Networking
 setconfig -f /etc/sysctl.conf net.local.stream.recvspace=65536
