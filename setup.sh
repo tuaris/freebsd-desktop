@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.22
+# Version 0.1.23
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -57,7 +57,7 @@ if [ $(sysctl -n kern.ostype) != "FreeBSD" ]; then
 	exit 1
 fi
 
-# Currently we only support FreeBSD 12.2 up to 14.0
+# Currently we only support FreeBSD 12.3 up to 14.0
 if [ ! $CURRENT_FREEBSD_VERSION -ge $MIN_VERSION ] || [ ! $CURRENT_FREEBSD_VERSION -le $MAX_VERSION ]; then
 	echo "Fatal Error: This script is not supported for your FreeBSD version: $(freebsd-version)"
 	exit 1
@@ -188,23 +188,30 @@ fi
 # Configure rc.conf
 sysrc moused_enable="YES" dbus_enable="YES" hald_enable="YES" sddm_enable="YES" ntpd_enable="YES" ntpd_flags="-g" webcamd_enable="YES" kiconv_preload="YES" kiconv_local_charsets="UTF-8" kiconv_foreign_charsets="UTF-8"
 
-# Install Software
+# Install Core Graphical Environment Software (last 2 pull in core libs for QT and GTK)
 pkg install -y xorg
-pkg install -y mate
-pkg install -y octopkg
-pkg install -y firefox
-pkg install -y seahorse
-pkg install -y sddm sddm-freebsd-black-theme
-pkg install -y networkmgr pavucontrol
+pkg install -y xdg-user-dirs
 pkg install -y webcamd kiconvtool
-pkg install -y fish sudo doas xdg-user-dirs
+pkg install -y octopkg
 pkg install -y leafpad
+
+# Install Desktop Environment, themes and related utilities
+pkg install -y mate
+pkg install -y seahorse gnome-keyring
+pkg install -y networkmgr pavucontrol
+pkg install -y x11-themes/matcha-gtk-themes x11-themes/gtk-nodoka-engine x11-themes/qogir-gtk-themes
+
+# Install Icon & Cursor Themes
+pkg install -y x11-themes/papirus-icon-theme x11-themes/cursor-neutral-white-theme x11-themes/qogir-icon-themes
+
+# Shell and Utilities
+pkg install -y fish sudo doas 
+
+# Install Session Manager
+pkg install -y sddm sddm-freebsd-black-theme
 
 # Initial Sound theme
 pkg install -y audio/freedesktop-sound-theme
-
-# Install (a soon to be default) desktop & icon theme
-pkg install -y x11-themes/matcha-gtk-themes x11-themes/papirus-icon-theme x11-themes/gtk-nodoka-engine x11-themes/cursor-neutral-white-theme x11-themes/qogir-icon-themes x11-themes/qogir-gtk-themes
 
 # Install some fonts
 pkg install -y chinese/arphicttf chinese/font-std hebrew/culmus hebrew/elmar-fonts japanese/font-ipa japanese/font-ipa-uigothic japanese/font-ipaex japanese/font-kochi japanese/font-migmix japanese/font-migu japanese/font-mona-ipa japanese/font-motoya-al japanese/font-mplus-ipa japanese/font-sazanami japanese/font-shinonome japanese/font-takao japanese/font-ume japanese/font-vlgothic x11-fonts/hanazono-fonts-ttf japanese/font-mikachan korean/aleefonts-ttf korean/nanumfonts korean/unfonts-core x11-fonts/anonymous-pro x11-fonts/artwiz-aleczapka x11-fonts/dejavu x11-fonts/inconsolata-ttf x11-fonts/terminus-font x11-fonts/cantarell-fonts x11-fonts/droid-fonts-ttf x11-fonts/doulos x11-fonts/ubuntu-font x11-fonts/isabella x11-fonts/junicode x11-fonts/khmeros x11-fonts/padauk x11-fonts/stix-fonts x11-fonts/charis x11-fonts/urwfonts-ttf russian/koi8r-ps x11-fonts/geminifonts x11-fonts/cyr-rfx x11-fonts/paratype x11-fonts/gentium-plus x11-fonts/nerd-fonts x11-fonts/powerline-fonts
@@ -374,7 +381,10 @@ permit nopass keepenv :wheel cmd sh args /usr/local/lib/update-station/cleandesk
 permit nopass keepenv :wheel cmd shutdown args -r now
 EOF
 
-# Lets now install some additional usefull osftware
+# Web Broswer
+pkg install -y firefox
+
+# Lets now install some additional usefull software
 pkg install -y thunderbird mpc-qt vlc notepadnext photoflare
 
 # Install VMWare Tools (if virtual machine on VMWare)
@@ -394,4 +404,3 @@ fi
 
 # All done, lets reboot into a desktop!
 reboot
-
