@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.21
+# Version 0.1.22
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -189,11 +189,16 @@ fi
 sysrc moused_enable="YES" dbus_enable="YES" hald_enable="YES" sddm_enable="YES" ntpd_enable="YES" ntpd_flags="-g" webcamd_enable="YES" kiconv_preload="YES" kiconv_local_charsets="UTF-8" kiconv_foreign_charsets="UTF-8"
 
 # Install Software
-pkg install -y xorg firefox sudo
-pkg install -y mate-desktop mate networkmgr pavucontrol
+pkg install -y xorg
+pkg install -y mate
+pkg install -y octopkg
+pkg install -y firefox
+pkg install -y seahorse
 pkg install -y sddm sddm-freebsd-black-theme
+pkg install -y networkmgr pavucontrol
 pkg install -y webcamd kiconvtool
-pkg install -y octopkg fish doas seahorse xdg-user-dirs leafpad
+pkg install -y fish sudo doas xdg-user-dirs
+pkg install -y leafpad
 
 # Initial Sound theme
 pkg install -y audio/freedesktop-sound-theme
@@ -370,7 +375,7 @@ permit nopass keepenv :wheel cmd shutdown args -r now
 EOF
 
 # Lets now install some additional usefull osftware
-pkg install -y thunderbird openjdk8 mpc-qt vlc
+pkg install -y thunderbird mpc-qt vlc notepadnext photoflare
 
 # Install VMWare Tools (if virtual machine on VMWare)
 if [ $(pciconf -lv | grep -i vmware >/dev/null 2>/dev/null; echo $?) = "0" ]; then
@@ -389,3 +394,4 @@ fi
 
 # All done, lets reboot into a desktop!
 reboot
+
