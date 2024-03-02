@@ -46,7 +46,7 @@ There is no error control.  If a package fails to download, the execution will j
 
 ## Requirements
 
-Platform options are limited only due to lack of packages.
+Platform options are limited only due to lack of packages.  It's recomended that you start with a fresh copy of FreeBSD for the best results.
 
 - FreeBSD 13.2-RELEASE or later
 - 64-bit edition (amd64)
@@ -54,6 +54,16 @@ Platform options are limited only due to lack of packages.
 - Internet connection
 
 Packages for 12.x-RELEASE, 11.x-RELEASE and ARM platforms are also built, but not guaranteed to be available.
+
+### User
+
+This install script does not create a user nor prompt you to create one.  The user account you plan on using should below to the `wheel`, `operator`, and `video` groups.
+
+```
+pw usermod <user> -G wheel,operator,video
+```
+
+Replace `<user>` above with the user account that you will want to allow login access to the desktop.
 
 ## About
 
