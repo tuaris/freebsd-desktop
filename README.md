@@ -115,7 +115,7 @@ Finally if the script detects that it's running inside of a VMware virtual machi
 
 ## Alernative Desktops
 
-MATE is the officially supported desktop.  It receives the most amount of testing and iterative improvment since it's what I use everyday.  If you want to help in testing and submitting improvments/fixes for other desktops, you can try out these other isntaller scripts (not currently hosted on Github).
+MATE is the officially supported desktop.  It receives the most amount of testing and iterative improvment since it's what I use everyday.  If you want to help in testing and submitting improvments/fixes for other desktops, you can try out these other installer scripts (not currently hosted on Github).
 
 - [LXQT](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-lxqt-desktop.sh)
 - [XFCE](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-xfce-desktop.sh)
