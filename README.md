@@ -120,7 +120,13 @@ MATE is the officially supported desktop.  It receives the most amount of testin
 - [LXQT](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-lxqt-desktop.sh)
 - [XFCE](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-xfce-desktop.sh)
 - [KDE](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-kde-desktop.sh)
-- [Budgie](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-budgie-desktop.sh)
+- [Budgie](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-budgie-desktop.sh) (un-tested, display corruption on VMWare)
+
+### Screenshots
+
+[![Screenshot1](http://download.morante.net/unibia/screenshots/freebsd/thumb/freebsd-lxqt-desktop-275px.jpg?gh)](http://download.morante.net/unibia/screenshots/freebsd/freebsd-lxqt-desktop.jpg)
+[![Screenshot2](http://download.morante.net/unibia/screenshots/freebsd/thumb/freebsd-xfce-desktop-275px.jpg?gh)](http://download.morante.net/unibia/screenshots/freebsd/freebsd-xfce-desktop.jpg)
+[![Screenshot3](http://download.morante.net/unibia/screenshots/freebsd/thumb/freebsd-kde-desktop-275px.jpg?gh)](http://download.morante.net/unibia/screenshots/freebsd/freebsd-kde-desktop.jpg)
 
 To submit a bug/improvment, just open a Github issue.
 
