@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.26
+# Version 0.1.27
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -262,6 +262,7 @@ sysrc -f /boot/loader.conf fusefs_load="YES" tmpfs_load="YES" smbfs_load="YES" a
 
 # Pretty Boot
 sysrc -f /boot/loader.conf boot_mute="YES"
+sysrc rc_startmsgs="NO"
 
 # Boot-time kernel tuning
 setconfig -f /boot/loader.conf kern.ipc.shmseg=1024
