@@ -48,16 +48,16 @@ There is no error control.  If a package fails to download, the execution will j
 
 Platform options are limited only due to lack of packages.
 
-- FreeBSD 12.x-RELEASE
+- FreeBSD 13.2-RELEASE or later
 - 64-bit edition (amd64)
 - 20 GB free space
 - Internet connection
 
-Packages for 11.x-RELEASE and ARM platforms are also built, but not guaranteed to be available.
+Packages for 12.x-RELEASE, 11.x-RELEASE and ARM platforms are also built, but not guaranteed to be available.
 
 ## About
 
-This is inspired by GhostBSD.  GhostBSD was a FreeBSD desktop distribution that originally used FreeBSD as it's base.  After several years GhostBSD switch it's base to TrueOS.  While GhostBSD continues to be a great desktop I require (and prefer) a FreeBSD base system. I created this installation script and the corresponding PKG repository to fill the gap left by GhostBSD.
+This is inspired by GhostBSD.  GhostBSD is a FreeBSD desktop that uses (and as of 3/1/2024 still does use) FreeBSD as it's base. A few years ago GhostBSD switched it's base to TrueOS, then back to FreeBSD CURRENT after TrueOS was discontinued.  At somepoint is was announced GhostBSD was moving to Linux, but that hasn't materialized.  While GhostBSD continues to be a great desktop I require (and prefer) a FreeBSD base system, and some assurance that it will always be FreeBSD based. I created this installation script and the corresponding PKG repository for this reason.
 
 ## How it Works
 
@@ -68,7 +68,16 @@ A custom PKG repo is built using [ports-mgmt/poudriere](https://www.freshports.o
 DISABLE_LICENSES=yes
 
 # Desktop Specific Options
+OPTIONS_SET+=SNDIO
 sysutils_gksu_UNSET+=NAUTILUS
+x11-wm_compiz-fusion_UNSET+=EMERALD
+accessibility_redshift_SET+=GUI VIDMODE
+audio_espeak_UNSET+=PORTAUDIO
+www_qt5-webengine_UNSET+=ALSA
+www_qt6-webengine_UNSET+=ALSA
+audio_rhvoice_UNSET+=AO
+comms_morse_UNSET+=OSS
+audio_harp_UNSET+=OSS
 ```
 
 *The full build scripts and configuration files will be published sometime in the future.*
@@ -86,10 +95,24 @@ The complete list of packages installed will vary as dependencies change.  This 
 - [shells/fish/](https://www.freshports.org/shells/fish/) Shell.
 - [mail/thunderbird](https://www.freshports.org/mail/thunderbird) E-mail client.
 - [java/openjdk8](https://www.freshports.org/java/openjdk8/) Java runtime.
+- [x11/alacritty](https://www.freshports.org/x11/alacritty/) A very nice terminal
+- [editors/notepadnext](https://www.freshports.org/editors/notepadnext/) Just like Notepad++ on Windows
+- [graphics/photoflare](https://www.freshports.org/graphics/photoflare/) MGI PhotoSuite Style Image Editor
 
 It also goes on to install some GhostBSD packages that have been ported over such as utilities and themes.
 
 Finally if the script detects that it's running inside of a VMware virtual machine it will trigger the install the Open VMware tools package as described at http://www.unibia.com/unibianet/freebsd/vmware-tools-smooth-mouse-clipboard-sharing-auto-resize-ghostbsd-103.
+
+## Alernative Desktops
+
+MATE is the officially supported desktop.  It receives the most amount of testing and iterative improvment since it's what I use everyday.  If you want to help in testing and submitting improvments/fixes for other desktops, you can try out these other isntaller scripts (not currently hosted on Github).
+
+- [LXQT](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-lxqt-desktop.sh)
+- [XFCE](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-xfce-desktop.sh)
+- [KDE](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-kde-desktop.sh)
+- [Budgie](http://ftp.morante.net/pub/FreeBSD/extra/desktop/freebsd-budgie-desktop.sh)
+
+To submit a bug/improvment, just open a Github issue.
 
 ## The Repository
 
