@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.25
+# Version 0.1.27
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -199,7 +199,7 @@ pkg install -y leafpad
 pkg install -y x11-themes/papirus-icon-theme x11-themes/cursor-neutral-white-theme x11-themes/qogir-icon-themes
 
 # Shell and Utilities
-pkg install -y fish sudo doas
+pkg install -y fish sudo doas alacritty
 
 # Initial Sound theme
 pkg install -y audio/freedesktop-sound-theme
