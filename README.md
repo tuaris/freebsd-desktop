@@ -21,8 +21,8 @@ __Note: Use the link (http://k.itty.cat/7) to always get the latest version of t
 
 ## Quick Start
 
-It's recommended that you start with a clean install of FreeBSD 12.x 64-bit.  Your non-root user
-should belong to the `operator` and `wheel` group so that it can perform administrative functions.
+It's recommended that you start with a clean install of FreeBSD 14.x 64-bit.  Your non-root user
+should belong to the `video`, `operator` and `wheel` group so that it can perform administrative functions.
 
 ```
 fetch -o - http://k.itty.cat/7 | sh
