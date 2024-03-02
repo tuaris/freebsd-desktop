@@ -57,7 +57,7 @@ Packages for 12.x-RELEASE, 11.x-RELEASE and ARM platforms are also built, but no
 
 ### User
 
-This install script does not create a user nor prompt you to create one.  The user account you plan on using should below to the `wheel`, `operator`, and `video` groups.
+This install script does not create a user nor prompt you to create one.  The user account you plan on using should belong to the `wheel`, `operator`, and `video` groups.
 
 ```
 pw usermod <user> -G wheel,operator,video
