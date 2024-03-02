@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.27
+# Version 0.1.26
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
