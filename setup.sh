@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.27
+# Version 0.1.28
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -261,8 +261,55 @@ setconfig -f /etc/sysctl.conf vfs.usermount=1
 sysrc -f /boot/loader.conf fusefs_load="YES" tmpfs_load="YES" smbfs_load="YES" aio_load="YES" libiconv_load="YES" libmchain_load="YES" cd9660_iconv_load="YES" msdosfs_iconv_load="YES" snd_driver_load="YES" cuse_load="YES" 
 
 # Pretty Boot
-sysrc -f /boot/loader.conf boot_mute="YES"
-sysrc rc_startmsgs="NO"
+sysrc -f /boot/loader.conf boot_mute="YES" autoboot_delay="3"
+sysrc rc_startmsgs="NO" background_dhclient="YES"
+
+# Override the FreeBSD default syslog.conf with a desktop friendly version
+# The magic is in the last line, it copies the existing syslog.conf (minus comments) 
+# and removes the line that logs to /dev/console
+# Hints for `sed` from: https://stackoverflow.com/questions/17998763/sed-commenting-a-line-matching-a-specific-string-and-that-is-not-already-comme
+sysrc syslogd_flags="-s -f /usr/local/etc/syslog.conf"
+touch /var/log/console.log; chmod 600 /var/log/console.log
+cat << EOF >/usr/local/etc/syslog.conf
+# FreeBSD $(freebsd-version)
+# Desktop Syslog Configuration File
+# Generated on $(date)
+# Version 0.0.1
+#
+# This file was created by the FreeBSD Desktop installer. Changes made here 
+# could be overritten. Add any syslog configuration entries to: 
+#
+# /usr/local/etc/syslog.d/*.conf
+#
+# This is the FreeBSD recomended best practice.
+#
+*.err;kern.warning;auth.notice;mail.crit               /var/log/console.log
+console.*                                              /var/log/console.log
+$(cat /etc/syslog.conf | sed 's/^[^#]*\/dev\/console/#&/' | grep '^[^#]')
+EOF
+
+# Silence rc.d completely
+#
+# TODO: This isn't elegant at all and is more of a hack.  However FreeBSD has not other way
+# of addressing this functionality unless you resort to modifying the base system, which we
+# do not want to do.
+sysrc suppress_rc_output="YES" rc_conf_files="/etc/rc.conf /etc/rc.conf.local /etc/rc.conf.desktop"
+cat << EOF >/etc/rc.conf.desktop
+# FreeBSD $(freebsd-version)
+# Desktop Local RC File
+# Generated on $(date)
+# Version 0.0.1
+#
+# This file was created by the FreeBSD Desktop installer. Changes made here 
+# could be overritten.
+#
+# Redirect all output (stdout and stderr to /dev/null if the option is enabled
+# in /etc/rc.conf
+if checkyesno suppress_rc_output; then
+    exec 1>/dev/null
+    exec 2>/dev/null
+fi
+EOF
 
 # Boot-time kernel tuning
 setconfig -f /boot/loader.conf kern.ipc.shmseg=1024
