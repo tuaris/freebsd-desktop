@@ -306,8 +306,8 @@ cat << EOF >/etc/rc.conf.desktop
 # Redirect all output (stdout and stderr to /dev/null if the option is enabled
 # in /etc/rc.conf
 if checkyesno suppress_rc_output; then
-	# An alternative would be to turn close the file descriptors
-	# using '&-' instead of '/dev/null'.   More testing needed.
+    # An alternative would be to turn close the file descriptors
+    # using '&-' instead of '/dev/null'.   More testing needed.
     exec 1>/dev/null
     exec 2>/dev/null
 fi
