@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.28
+# Version 0.1.29
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -196,7 +196,7 @@ pkg install -y octopkg
 pkg install -y leafpad
 
 # Install Icon & Cursor Themes
-pkg install -y x11-themes/papirus-icon-theme x11-themes/cursor-neutral-white-theme x11-themes/qogir-icon-themes
+pkg install -y x11-themes/papirus-icon-theme x11-themes/cursor-neutral-white-theme x11-themes/qogir-icon-themes x11-themes/win98se-icon-theme
 
 # Shell and Utilities
 pkg install -y fish sudo doas alacritty
@@ -220,7 +220,7 @@ pkg install -y thunderbird mpc-qt vlc notepadnext photoflare
 pkg install -y mate
 pkg install -y seahorse gnome-keyring
 pkg install -y networkmgr pavucontrol
-pkg install -y x11-themes/matcha-gtk-themes x11-themes/gtk-nodoka-engine x11-themes/qogir-gtk-themes
+pkg install -y x11-themes/matcha-gtk-themes x11-themes/gtk-nodoka-engine x11-themes/qogir-gtk-themes x11-themes/chicago95
 
 # Install session manager with themes/tools
 pkg install -y sddm
@@ -306,6 +306,8 @@ cat << EOF >/etc/rc.conf.desktop
 # Redirect all output (stdout and stderr to /dev/null if the option is enabled
 # in /etc/rc.conf
 if checkyesno suppress_rc_output; then
+	# An alternative would be to turn close the file descriptors
+	# using '&-' instead of '/dev/null'.   More testing needed.
     exec 1>/dev/null
     exec 2>/dev/null
 fi
