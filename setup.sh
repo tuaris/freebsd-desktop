@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.29
+# Version 0.1.30
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -322,7 +322,16 @@ setconfig -f /boot/loader.conf kern.maxproc=100000
 # https://forums.ghostbsd.org/viewtopic.php?t=792
 # https://github.com/nomadbsd/NomadBSD/blob/master/config/boot/loader.conf
 # https://github.com/helloSystem/ISO/blob/experimental/overlays/boot/boot/loader.conf
-sysrc -f /boot/loader.conf hint.pcm.0.eq="1" hint.pcm.1.eq="1" hint.pcm.2.eq="1" hint.pcm.3.eq="1" hint.pcm.4.eq="1" hint.pcm.5.eq="1" hint.pcm.6.eq="1" hint.pcm.7.eq="1" hint.pcm.8.eq="1" hint.pcm.9.eq="1"
+setconfig -f /boot/loader.conf hint.pcm.0.eq="1"
+setconfig -f /boot/loader.conf hint.pcm.1.eq="1"
+setconfig -f /boot/loader.conf hint.pcm.2.eq="1"
+setconfig -f /boot/loader.conf hint.pcm.3.eq="1"
+setconfig -f /boot/loader.conf hint.pcm.4.eq="1"
+setconfig -f /boot/loader.conf hint.pcm.5.eq="1"
+setconfig -f /boot/loader.conf hint.pcm.6.eq="1"
+setconfig -f /boot/loader.conf hint.pcm.7.eq="1"
+setconfig -f /boot/loader.conf hint.pcm.8.eq="1"
+setconfig -f /boot/loader.conf hint.pcm.9.eq="1"
 
 cat << EOF >/usr/local/etc/PolicyKit/PolicyKit.conf
 <config version="0.1">
