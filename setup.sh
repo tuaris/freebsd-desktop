@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.30
+# Version 0.1.31
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -215,6 +215,10 @@ pkg install -y firefox
 
 # Install additional usefull software for a better experience
 pkg install -y thunderbird mpc-qt vlc notepadnext photoflare
+
+# Install Spell Check, Dictionaries, Thesuarus, and Word lists (English only for now)
+pkg install -y hunspell aspell mythes
+pkg install -y en-hunspell en-aspell en-mythes
 
 # Install Desktop Environment, themes and related utilities
 pkg install -y mate
