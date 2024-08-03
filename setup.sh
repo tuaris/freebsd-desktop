@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.31
+# Version 0.1.32
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -186,7 +186,7 @@ if [ $(sysctl -n kern.osreldate) -ge  1202000 ]; then
 fi
 
 # Configure rc.conf
-sysrc moused_enable="YES" dbus_enable="YES" hald_enable="YES" ntpd_enable="YES" ntpd_flags="-g" webcamd_enable="YES" kiconv_preload="YES" kiconv_local_charsets="UTF-8" kiconv_foreign_charsets="UTF-8"
+sysrc moused_enable="YES" dbus_enable="YES" hald_enable="YES" ntpd_enable="YES" ntpd_flags="-g" webcamd_enable="YES" kiconv_preload="YES" kiconv_local_charsets="UTF-8" kiconv_foreign_charsets="UTF-8" autofs_enable="YES"
 
 # Install Core Graphical Environment Software (last 2 pull in core libs for QT and GTK)
 pkg install -y xorg
