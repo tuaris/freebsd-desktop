@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.32
+# Version 0.1.33
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -214,7 +214,7 @@ pkg install -y twemoji-color-font-ttf noto-emoji textproc/ibus-uniemoji
 pkg install -y firefox
 
 # Install additional usefull software for a better experience
-pkg install -y thunderbird mpc-qt vlc notepadnext photoflare
+pkg install -y thunderbird mpc-qt vlc notepadnext photoflare qview
 
 # Install Spell Check, Dictionaries, Thesuarus, and Word lists (English only for now)
 pkg install -y hunspell aspell mythes
