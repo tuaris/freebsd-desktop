@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.33
+# Version 0.1.34
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -38,9 +38,9 @@
 # For a full explination of what is going on here, please visit:
 # 	http://www.unibia.com/unibianet/freebsd/mate-desktop
 
-# For 12.3-RELEASE thru 14.0-RELEASE
-MIN_VERSION=1203000
-MAX_VERSION=1400097
+# For 13.4-RELEASE thru 14.1-RELEASE
+MIN_VERSION=1304000
+MAX_VERSION=1401000
 
 # Setup desktop FreeBSD (the "-K" option for "uname" is not avaiable pre-12)
 CURRENT_FREEBSD_VERSION=$(sysctl -n kern.osreldate)

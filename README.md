@@ -6,7 +6,7 @@ __Note: Use the link (http://k.itty.cat/7) to always get the latest version of t
 
 #### Disclaimers and Warnings
 
-* It makes use of a custom package repository (https://pkg.ny-us.morante.net/desktop/). 
+* It makes use of a custom package repository (http://pkg.morante.net/desktop/). 
 * The [`security/ca_root_nss`](https://www.freshports.org/security/ca_root_nss) package is altered to include the [TDMC/Pacy World, LLC. root CA](http://www.pacyworld.com/ca.php).
 * The [`security/nss`](https://www.freshports.org/security/nss) package is altered to include the [TDMC/Pacy World, LLC. root CA](http://www.pacyworld.com/ca.php).
 * The [`www/firefox`](https://www.freshports.org/www/firefox) and [`www/firefox-esr`](https://www.freshports.org/www/firefox-esr) packages are altered to include the [TDMC/Pacy World, LLC. root CA](http://www.pacyworld.com/ca.php).
@@ -21,7 +21,7 @@ __Note: Use the link (http://k.itty.cat/7) to always get the latest version of t
 
 ## Quick Start
 
-It's recommended that you start with a clean install of FreeBSD 14.x 64-bit.  Your non-root user
+It's recommended that you start with a clean install of FreeBSD 14.1 64-bit.  Your non-root user
 should belong to the `video`, `operator` and `wheel` group so that it can perform administrative functions.
 
 ```
@@ -48,12 +48,12 @@ There is no error control.  If a package fails to download, the execution will j
 
 Platform options are limited only due to lack of packages.  It's recomended that you start with a fresh copy of FreeBSD for the best results.
 
-- FreeBSD 13.2-RELEASE or later
+- FreeBSD 13.3-RELEASE or later
 - 64-bit edition (amd64)
 - 20 GB free space
 - Internet connection
 
-Packages for 12.x-RELEASE, 11.x-RELEASE and ARM platforms are also built, but not guaranteed to be available.
+Packages for ARM platforms are also built but not guaranteed to be available.  Older platforms like 12.x-RELEASE and 11.x-RELEASE may or may not work depending on package availability.
 
 ### User
 
