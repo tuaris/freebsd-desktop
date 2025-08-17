@@ -2,7 +2,7 @@
 
 # http://k.itty.cat/7
 # FreeBSD Desktop
-# Version 0.1.34
+# Version 0.1.35
 
 ########################################################################################
 # Copyright (c) 2016-2024, The Daniel Morante Company, Inc.
@@ -240,7 +240,7 @@ Current=sddm-freebsd-black-theme
 EOF
 
 # Mount points for Java
-FSTAB=/etc/fstab; if [ $(grep -q "/proc" "${FSTAB}"; echo $?) == 1 ]; then echo -e "proc\t/proc\t\t\tprocfs\trw\t\t0\t0" >> $FSTAB; fi; if [ $(grep -q "/dev/fd" "${FSTAB}"; echo $?) == 1 ]; then echo -e "fdesc\t/dev/fd\t\t\tfdescfs\trw,auto,late\t0\t0" >> $FSTAB; fi
+FSTAB=/etc/fstab; if [ ! $(grep -q "/proc" "${FSTAB}") ]; then echo -e "proc\t/proc\t\t\tprocfs\trw\t\t0\t0" >> $FSTAB; fi; if [ ! $(grep -q "/dev/fd" "${FSTAB}") ]; then echo -e "fdesc\t/dev/fd\t\t\tfdescfs\trw,auto,late\t0\t0" >> $FSTAB; fi
 
 # Allow sudo and doas to function for users in the 'wheel' group
 sed -i '' -r 's/^# (%wheel ALL=\(ALL\) ALL)$/\1/I' /usr/local/etc/sudoers
